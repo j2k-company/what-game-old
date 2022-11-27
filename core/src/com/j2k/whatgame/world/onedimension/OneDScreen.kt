@@ -33,7 +33,7 @@ class OneDScreen(override val batch: SpriteBatch) : WorldScreen() {
         renderer = OneDRenderer(800f, shapeDrawer)
     }
 
-    private val entities = arrayOf<Entity>(Enemy(5f, 10f, 50f), player)
+    private val entities = arrayOf<Entity>(Enemy(5f, 10f, 50f, 5f, Pair(-400, 400)), player)
 
     override fun show() {
         camera = OrthographicCamera(800f, 800f)

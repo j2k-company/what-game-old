@@ -23,6 +23,7 @@ class OneDRenderer(
 
         for(entity in entities) {
             if(entity is OneDEntity) {
+                entity.update()
                 entity.render(shapeDrawer)
             }
         }

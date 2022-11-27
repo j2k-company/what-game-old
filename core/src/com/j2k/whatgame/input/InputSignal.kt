@@ -8,7 +8,7 @@ enum class InputSignal {
     PLAYER_UP_MOVE,
     PLAYER_DOWN_MOVE;
 
-    companion object {
+    companion object Mapper {
         fun getAtKey(keycode: Int): InputSignal? {
             return when (keycode) {
                 Input.Keys.W -> PLAYER_UP_MOVE
