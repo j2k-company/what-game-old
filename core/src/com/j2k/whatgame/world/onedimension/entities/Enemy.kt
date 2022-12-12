@@ -1,8 +1,14 @@
 package com.j2k.whatgame.world.onedimension.entities
 
 import space.earlygrey.shapedrawer.ShapeDrawer
+import javax.swing.text.Position
+import kotlin.math.abs
 import kotlin.properties.Delegates
 import kotlin.random.Random
+
+enum class Behaviour {
+    WANDERING, ATTACK, FLIGHT
+}
 
 class Enemy(
     override var position: Float,
@@ -13,6 +19,7 @@ class Enemy(
 ) : LivingEntity() {
     val initialHealth = health
     val habitat_length = habitat.second - habitat.first
+    val behaviour = Behaviour.WANDERING
 
     private var speed: Float = 0f
         set(value) {
@@ -37,6 +44,23 @@ class Enemy(
         desiredSpeed = (distance / habitat_length) * (max_speed / 2)
     }
 
+    private fun wander() {
+    }
+
+    private fun seek(targetPosition: Int) {
+        val distance = targetPosition - position
+        var desiredSpeed = (distance / habitat_length) * max_speed
+        if (desiredSpeed > 0 && desiredSpeed > max_speed) {
+            desiredSpeed = max_speed
+        } else if (desiredSpeed < 0 && desiredSpeed < -max_speed) {
+            desiredSpeed = -max_speed
+        }
+        val steering = (desiredSpeed - speed) / length
+
+        speed += steering
+        println(speed)
+    }
+
     override fun render(shapeDrawer: ShapeDrawer) {
         shapeDrawer.setColor(1f, 1f, 0f, 1f)
         shapeDrawer.line(targetPosition.toFloat(), 0f, targetPosition + 5f, 0f)
@@ -45,19 +69,22 @@ class Enemy(
     }
 
     override fun update() {
-        if(targetIsAhead && speed < desiredSpeed
-            || !targetIsAhead && speed > desiredSpeed) {
-            speed += desiredSpeed
-        }
-
+//        if(targetIsAhead && speed < desiredSpeed
+//            || !targetIsAhead && speed > desiredSpeed) {
+//            speed += desiredSpeed
+//        }
+//
+//        position += speed
+//
+//        if (
+//            targetIsAhead && position > targetPosition
+//            || !targetIsAhead && position < targetPosition
+//        ) {
+//            newTargetPosition()
+//        }
+        if (position < 199 && speed >= 0) seek(200)
+        else seek(-100)
         position += speed
-
-        if (
-            targetIsAhead && position > targetPosition
-            || !targetIsAhead && position < targetPosition
-        ) {
-            newTargetPosition()
-        }
 
     }
 }
