@@ -1,6 +1,5 @@
 package com.j2k.whatgame.world.twodimension
 
-import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.PolygonRegion
 import com.badlogic.gdx.graphics.g2d.PolygonSprite
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch
@@ -8,28 +7,21 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.math.Vector2
 
 object MarchingSquares {
-
-    fun threshold(
-        data: List<List<Byte>>,
-        threshold: Byte
-    ): List<List<Int>> = data.map {
-        it.map { value ->
-            if (value > threshold) 1 else 0
-        }
-    }
-
-    fun getConfigurations(data: List<List<Int>>): List<Int> {
-        val configurations = mutableListOf<Int>()
+    fun getConfigurations(data: List<List<Int>>): List<List<Int>> {
+        val configurations = mutableListOf<List<Int>>()
 
         val xSize = data.lastIndex
         val ySize = data.first().lastIndex
 
-        for (x in 0 until xSize) {
-            for (y in 0 until ySize) {
-                configurations.add(
-                    8 * data[x][y] + 4 * data[x + 1][y] + 2 * data[x + 1][y + 1] + data[x][y + 1]
+        for (y in 0 until ySize) {
+            val rowConf = mutableListOf<Int>()
+
+            for (x in 0 until xSize) {
+                rowConf.add(
+                    data[y][x] + 2 * data[y][x + 1] + 4 * data[y + 1][x + 1] + 8 * data[y + 1][x]
                 )
             }
+            configurations.add(rowConf)
         }
 
         return configurations
@@ -37,8 +29,8 @@ object MarchingSquares {
 
     fun drawSquare(
         configuration: Int,
-        texture: Texture,
-        size: Float,
+        texture: TextureRegion,
+        size: Int,
         polyBatch: PolygonSpriteBatch,
         pos: Vector2 = Vector2(0.0f, 0.0f)
     ) {
@@ -52,8 +44,8 @@ object MarchingSquares {
 
     fun getSquareSprites(
         configuration: Int,
-        texture: Texture,
-        size: Float,
+        texture: TextureRegion,
+        size: Int,
     ): List<PolygonSprite> {
         val sprites = mutableListOf<PolygonSprite>()
 
