@@ -13,7 +13,7 @@ class TerrainChunk {
         for (x in 0 until WIDTH) {
             for (y in 0 until HEIGHT) {
                 val conf = configurations[x][y]
-                val texture = Block.values()[blocks[x][y]].textures[conf]
+                val texture = Block.values()[blocks[x][y]].getTexture(conf)
 
                 MarchingSquares.drawSquare(
                     conf, texture, Block.SIZE, polyBatch,
@@ -21,12 +21,16 @@ class TerrainChunk {
                 )
             }
         }
+    }
 
+    fun setBlock(blockId: Int, configuration: Int, x: Int, y: Int) {
+        blocks[x][y] = blockId
+        configurations[x][y] = configuration
     }
 
     companion object {
         // chunk size in blocks
-        const val WIDTH = 500
-        const val HEIGHT = 250
+        const val WIDTH = 250
+        const val HEIGHT = 500
     }
 }

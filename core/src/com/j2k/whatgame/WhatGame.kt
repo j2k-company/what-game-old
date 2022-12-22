@@ -10,6 +10,7 @@ import com.j2k.whatgame.input.inputmanager.AndroidInputManager
 import com.j2k.whatgame.input.inputmanager.DesktopInputManager
 import com.j2k.whatgame.input.inputmanager.InputManager
 import com.j2k.whatgame.world.onedimension.OneDScreen
+import com.j2k.whatgame.world.twodimension.TwoDScreen
 
 class WhatGame : Game() {
     private lateinit var batch: SpriteBatch
@@ -27,7 +28,7 @@ class WhatGame : Game() {
         }
 
         batch = SpriteBatch()
-        gameScreen = OneDScreen(batch)
+        gameScreen = TwoDScreen(batch)
 
         Gdx.input.inputProcessor = inputManager
         setScreen(gameScreen)
@@ -47,7 +48,12 @@ class WhatGame : Game() {
             handleInput(it)
         }
 
-        ScreenUtils.clear(0.7f, 0.7f, 0.7f, 1f)
+        ScreenUtils.clear(
+            0x6A / 255f,
+            0x84 / 255f,
+            0xD2 / 255f,
+            1f
+        )
         super.render()
     }
 

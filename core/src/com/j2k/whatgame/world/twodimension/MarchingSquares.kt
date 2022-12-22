@@ -13,12 +13,12 @@ object MarchingSquares {
         val xSize = data.lastIndex
         val ySize = data.first().lastIndex
 
-        for (y in 0 until ySize) {
+        for (x in 0 until xSize) {
             val rowConf = mutableListOf<Int>()
 
-            for (x in 0 until xSize) {
+            for (y in 0 until ySize) {
                 rowConf.add(
-                    data[y][x] + 2 * data[y][x + 1] + 4 * data[y + 1][x + 1] + 8 * data[y + 1][x]
+                    data[x][y] + 2 * data[x + 1][y] + 4 * data[x + 1][y + 1] + 8 * data[x][y + 1]
                 )
             }
             configurations.add(rowConf)
