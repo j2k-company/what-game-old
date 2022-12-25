@@ -7,9 +7,9 @@ class WorldGenerator(largestFeature: Int, persistence: Double, seed: Int) {
         SimplexNoise(largestFeature, persistence, seed)
 
     fun generateChunk(chunkPosition: Int): TerrainChunk {
+        val chunk = TerrainChunk(chunkPosition)
         val chunkPosition = chunkPosition * TerrainChunk.WIDTH * Block.SIZE
 
-        val chunk = TerrainChunk()
         val vertices = Array(TerrainChunk.WIDTH + 1) {
             IntArray(TerrainChunk.HEIGHT + 1) { 0 }
         }
@@ -21,7 +21,7 @@ class WorldGenerator(largestFeature: Int, persistence: Double, seed: Int) {
 
                 // TODO: remove magic values
                 // 250 - is the height of the noise zero point
-                // 200 - magic coef for values in the range (-1, 1)
+                // 200 - magic coefficient for values in the range (-1, 1)
                 if (yPos > noise.getNoise(xPos, 0) * 200 + 250) {
                     vertices[x][y] = 0
                 } else {
@@ -37,7 +37,6 @@ class WorldGenerator(largestFeature: Int, persistence: Double, seed: Int) {
 
         for (x in 0 until TerrainChunk.WIDTH) {
             for (y in 0 until TerrainChunk.HEIGHT) {
-                println("$x, $y")
                 chunk.setBlock(blocks[x][y], configurations[x][y], x, y)
             }
         }
