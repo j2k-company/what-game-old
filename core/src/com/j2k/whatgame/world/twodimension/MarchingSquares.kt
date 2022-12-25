@@ -51,7 +51,7 @@ object MarchingSquares {
 
         contours[configuration].forEach { figure ->
             val polyReg = PolygonRegion(
-                TextureRegion(texture),
+                texture,
                 figure.first.map {
                     it * size
                 }.toFloatArray(), figure.second
@@ -63,7 +63,7 @@ object MarchingSquares {
         return sprites
     }
 
-
+    // TODO: Rewrite this shit with a meshes or something
     private val contours = listOf(
         listOf(Pair(floatArrayOf(), shortArrayOf())), // 0000 configuration
         listOf(

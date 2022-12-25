@@ -1,8 +1,6 @@
 package com.j2k.whatgame.world.onedimension.entities
 
 import space.earlygrey.shapedrawer.ShapeDrawer
-import javax.swing.text.Position
-import kotlin.math.abs
 import kotlin.properties.Delegates
 import kotlin.random.Random
 
@@ -58,8 +56,7 @@ class Enemy(
         val steering = (desiredSpeed - speed) / length
 
         speed += steering
-        println(speed)
-    }
+        }
 
     override fun render(shapeDrawer: ShapeDrawer) {
         shapeDrawer.setColor(1f, 1f, 0f, 1f)

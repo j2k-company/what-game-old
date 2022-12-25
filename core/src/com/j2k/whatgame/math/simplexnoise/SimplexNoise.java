@@ -27,7 +27,6 @@ public class SimplexNoise {
 
         //recieves a number (eg 128) and calculates what power of 2 it is (eg 2^7)
         int numberOfOctaves=(int)Math.ceil(Math.log10(largestFeature)/Math.log10(2));
-        System.out.println(numberOfOctaves);
 
         octaves=new SimplexNoiseOctave[numberOfOctaves];
         frequencys=new double[numberOfOctaves];
@@ -39,9 +38,7 @@ public class SimplexNoise {
             octaves[i]=new SimplexNoiseOctave(rnd.nextInt());
 
             frequencys[i] = Math.pow(2,i);
-            System.out.println("F="+frequencys[i]+" "+i);
             amplitudes[i] = (Math.pow(persistence,octaves.length-i)/2);
-            System.out.println("A="+amplitudes[i]+" "+i);
         }
 
     }
