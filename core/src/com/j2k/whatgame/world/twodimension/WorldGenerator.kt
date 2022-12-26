@@ -22,7 +22,7 @@ class WorldGenerator(largestFeature: Int, persistence: Double, seed: Int) {
                 // TODO: remove magic values
                 // 250 - is the height of the noise zero point
                 // 200 - magic coefficient for values in the range (-1, 1)
-                if (yPos > noise.getNoise(xPos, 0) * 200 + 250) {
+                if (yPos > noise.getNoise(xPos, 0) * 200 + 250 * Block.SIZE) {
                     vertices[x][y] = 0
                 } else {
                     vertices[x][y] = 1

@@ -12,7 +12,7 @@ public class DesktopLauncher {
 
 //		config.fullscreen = true;
 
-		config.vSyncEnabled = true;
+		config.vSyncEnabled = false;
 
 		new LwjglApplication(new WhatGame(), config);
 	}

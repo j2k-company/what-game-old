@@ -5,10 +5,13 @@ import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 
 object Assets {
-    val block_dirt: TextureRegion = TextureRegion(
+    val twoDPlayer = TextureRegion(
+        Texture(Gdx.files.internal("player2d.png"))
+    )
+    val blockDirt = TextureRegion(
         Texture(Gdx.files.internal("block_dirt.png"))
     )
-    val item_dirt: TextureRegion = TextureRegion(
+    val itemDirt = TextureRegion(
         Texture(Gdx.files.internal("item_dirt.png"))
     )
 }

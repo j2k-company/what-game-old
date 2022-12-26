@@ -31,6 +31,14 @@ class TerrainChunk(val position: Int) {
         configurations[x][y] = configuration
     }
 
+    fun getBlock(x: Int, y: Int): Block {
+        return Block.values()[blocks[x][y]]
+    }
+
+    fun getBlockConfiguration(x: Int, y: Int): Int {
+        return configurations[x][y]
+    }
+
     companion object {
         // chunk size in blocks
         const val WIDTH = 250
