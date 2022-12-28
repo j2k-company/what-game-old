@@ -1,6 +1,7 @@
 package com.j2k.whatgame.world.twodimension
 
 import com.j2k.whatgame.math.simplexnoise.SimplexNoise
+import kotlin.random.Random
 
 class WorldGenerator(largestFeature: Int, persistence: Double, seed: Int) {
     private var noise: SimplexNoise =
@@ -37,6 +38,9 @@ class WorldGenerator(largestFeature: Int, persistence: Double, seed: Int) {
 
         for (x in 0 until TerrainChunk.WIDTH) {
             for (y in 0 until TerrainChunk.HEIGHT) {
+                if ((0..TerrainChunk.HEIGHT).random() < TerrainChunk.HEIGHT/(y + 1)) {
+                    blocks[x][y] = 1
+                }
                 chunk.setBlock(blocks[x][y], configurations[x][y], x, y)
             }
         }
