@@ -11,6 +11,9 @@ object Assets {
     val blockDirt = TextureRegion(
         Texture(Gdx.files.internal("block_dirt.png"))
     )
+    val blockOre = TextureRegion(
+        Texture(Gdx.files.internal("block_ore.png"))
+    )
     val itemDirt = TextureRegion(
         Texture(Gdx.files.internal("item_dirt.png"))
     )
