@@ -5,11 +5,11 @@ import com.badlogic.gdx.Game
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.utils.ScreenUtils
+import com.j2k.whatgame.exception.InvalidPlatformException
 import com.j2k.whatgame.input.InputSignal
 import com.j2k.whatgame.input.inputmanager.AndroidInputManager
 import com.j2k.whatgame.input.inputmanager.DesktopInputManager
 import com.j2k.whatgame.input.inputmanager.InputManager
-import com.j2k.whatgame.world.onedimension.OneDScreen
 import com.j2k.whatgame.world.twodimension.TwoDScreen
 
 class WhatGame : Game() {

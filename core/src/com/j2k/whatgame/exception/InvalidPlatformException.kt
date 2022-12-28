@@ -1,4 +1,4 @@
-package com.j2k.whatgame
+package com.j2k.whatgame.exception
 
 import java.lang.Exception
 
