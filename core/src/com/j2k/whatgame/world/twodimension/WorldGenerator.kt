@@ -1,7 +1,6 @@
 package com.j2k.whatgame.world.twodimension
 
 import com.j2k.whatgame.math.simplexnoise.SimplexNoise
-import kotlin.random.Random
 
 class WorldGenerator(largestFeature: Int, persistence: Double, seed: Int) {
     private var noise: SimplexNoise =
