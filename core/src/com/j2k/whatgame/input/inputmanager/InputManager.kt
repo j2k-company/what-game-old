@@ -5,4 +5,5 @@ import com.j2k.whatgame.input.InputSignal
 
 abstract class InputManager : InputAdapter() {
     abstract val events: List<InputSignal>
+    abstract fun removeTemporaryEvents()
 }

@@ -40,6 +40,8 @@ class WhatGame : Game() {
             InputSignal.PLAYER_LEFT_MOVE -> { gameScreen.player.moveLeft() }
             InputSignal.PLAYER_UP_MOVE -> { gameScreen.player.moveUp() }
             InputSignal.PLAYER_DOWN_MOVE -> { gameScreen.player.moveDown() }
+            InputSignal.SCROLLED_DOWN -> { gameScreen.scroll(signal) }
+            InputSignal.SCROLLED_UP -> { gameScreen.scroll(signal) }
         }
     }
 
@@ -47,6 +49,7 @@ class WhatGame : Game() {
         inputManager.events.forEach {
             handleInput(it)
         }
+        inputManager.removeTemporaryEvents()
 
         ScreenUtils.clear(
             0x6A / 255f,

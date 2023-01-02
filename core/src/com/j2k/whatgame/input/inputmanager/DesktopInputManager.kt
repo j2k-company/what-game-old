@@ -27,4 +27,25 @@ class DesktopInputManager : InputManager() {
 
         return false
     }
+
+    override fun scrolled(amountX: Float, amountY: Float): Boolean {
+        if(amountY == 1f) {
+            _events.add(InputSignal.SCROLLED_DOWN)
+        } else if (amountY == -1f) {
+            _events.add(InputSignal.SCROLLED_UP)
+        } else {
+            return false
+        }
+        return true
+    }
+
+    override fun removeTemporaryEvents() {
+        _events.removeIf {
+            when(it) {
+                InputSignal.SCROLLED_DOWN -> true
+                InputSignal.SCROLLED_UP -> true
+                else -> false
+            }
+        }
+    }
 }

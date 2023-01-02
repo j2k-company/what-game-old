@@ -6,7 +6,10 @@ enum class InputSignal {
     PLAYER_LEFT_MOVE,
     PLAYER_RIGHT_MOVE,
     PLAYER_UP_MOVE,
-    PLAYER_DOWN_MOVE;
+    PLAYER_DOWN_MOVE,
+
+    SCROLLED_UP,
+    SCROLLED_DOWN;
 
     companion object Mapper {
         fun getAtKey(keycode: Int): InputSignal? {

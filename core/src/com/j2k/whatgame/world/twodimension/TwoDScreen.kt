@@ -5,23 +5,32 @@ import com.badlogic.gdx.graphics.OrthographicCamera
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.math.Vector2
+import com.badlogic.gdx.physics.box2d.World
 import com.badlogic.gdx.utils.viewport.ExtendViewport
 import com.badlogic.gdx.utils.viewport.Viewport
 import com.j2k.whatgame.Entity
 import com.j2k.whatgame.WorldScreen
+import com.j2k.whatgame.input.InputSignal
 import com.j2k.whatgame.world.twodimension.entities.TwoDPlayer
 import kotlin.random.Random
 
 class TwoDScreen(override val batch: SpriteBatch) : WorldScreen() {
+    private val ZOOM_SPEED = 0.3f
+    private val MAX_ZOOM = 2f
+    private val MIN_ZOOM = 0.3f
+
     override val renderer: TwoDRenderer = TwoDRenderer()
     override val player: TwoDPlayer = TwoDPlayer()
     private val polyBatch = PolygonSpriteBatch()
+    private val world = World(Vector2(0f, -10f), true)
 
     private val worldGenerator = WorldGenerator(2000, 0.60, Random.nextInt())
     private val chunks = ArrayList<TerrainChunk>()
     private val entities = emptyArray<Entity>()
 
-    val camera: Camera = OrthographicCamera(80f * 16, 45f * 16)
+    private val camera: OrthographicCamera = OrthographicCamera(
+        80f * Block.SIZE, 45f * Block.SIZE
+    )
 
     init {
         chunks.apply {
@@ -88,6 +97,15 @@ class TwoDScreen(override val batch: SpriteBatch) : WorldScreen() {
                 }
             }
         }
+    }
+
+    override fun scroll(inputSignal: InputSignal) {
+        if (inputSignal == InputSignal.SCROLLED_UP && camera.zoom > MIN_ZOOM) {
+            camera.zoom -= ZOOM_SPEED
+        } else if (inputSignal == InputSignal.SCROLLED_DOWN && camera.zoom < MAX_ZOOM) {
+            camera.zoom += ZOOM_SPEED
+        }
+        println(camera.zoom)
     }
 
     override fun resize(width: Int, height: Int) {

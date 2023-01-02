@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.j2k.whatgame.Entity
 import com.j2k.whatgame.WorldScreen
+import com.j2k.whatgame.input.InputSignal
 import com.j2k.whatgame.world.onedimension.entities.Enemy
 import com.j2k.whatgame.world.onedimension.entities.OneDPlayer
 import space.earlygrey.shapedrawer.ShapeDrawer
@@ -18,6 +19,9 @@ class OneDScreen(override val batch: SpriteBatch) : WorldScreen() {
 
     override val renderer: OneDRenderer
     override val player: OneDPlayer = OneDPlayer(-50f, 50f, 50f)
+    override fun scroll(inputSignal: InputSignal) {
+        TODO("Not yet implemented")
+    }
 
     init {
         val pixmap = Pixmap(1, 1, Pixmap.Format.RGBA8888)

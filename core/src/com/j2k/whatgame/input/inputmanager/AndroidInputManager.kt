@@ -5,4 +5,7 @@ import com.j2k.whatgame.input.InputSignal
 class AndroidInputManager : InputManager() {
     private val _events = mutableListOf<InputSignal>()
     override val events: List<InputSignal> by this::_events
+    override fun removeTemporaryEvents() {
+        TODO("Not yet implemented")
+    }
 }

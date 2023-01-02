@@ -6,6 +6,7 @@ class WorldGenerator(largestFeature: Int, persistence: Double, seed: Int) {
     private var noise: SimplexNoise =
         SimplexNoise(largestFeature, persistence, seed)
 
+    @Suppress("NAME_SHADOWING")
     fun generateChunk(chunkPosition: Int): TerrainChunk {
         val chunk = TerrainChunk(chunkPosition)
         val chunkPosition = chunkPosition * TerrainChunk.WIDTH * Block.SIZE
