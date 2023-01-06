@@ -1,15 +1,15 @@
 package com.j2k.whatgame.world.twodimension
 
-import com.badlogic.gdx.graphics.g2d.TextureRegion
-import com.j2k.whatgame.Assets
+import com.badlogic.gdx.graphics.g2d.TextureAtlas
+import com.badlogic.gdx.utils.Array
 
-enum class Block(private val textures: List<TextureRegion>, val item: Item?) {
-    DIRT(listOf(Assets.blockDirt), Item.DIRT), ORE(listOf(Assets.blockOre), null);
+enum class Block(private val textures: Array<TextureAtlas.AtlasRegion>, val item: Item?) {
+    DIRT(AssetManager.blockDirt, Item.DIRT), ORE(AssetManager.blockOre, null);
 
-    fun getTexture(conf: Int): TextureRegion =
-        textures.getOrElse(conf) { textures.first() }
+    fun getTexture(conf: Int): TextureAtlas.AtlasRegion =
+        textures.get(conf)
 
     companion object {
-        const val SIZE = 16
+        const val SIZE = 1
     }
 }

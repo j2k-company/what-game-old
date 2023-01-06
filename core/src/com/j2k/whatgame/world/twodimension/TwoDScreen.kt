@@ -1,11 +1,10 @@
 package com.j2k.whatgame.world.twodimension
 
-import com.badlogic.gdx.graphics.Camera
 import com.badlogic.gdx.graphics.OrthographicCamera
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.math.Vector2
-import com.badlogic.gdx.physics.box2d.World
+import com.badlogic.gdx.physics.box2d.*
 import com.badlogic.gdx.utils.viewport.ExtendViewport
 import com.badlogic.gdx.utils.viewport.Viewport
 import com.j2k.whatgame.Entity
@@ -20,16 +19,17 @@ class TwoDScreen(override val batch: SpriteBatch) : WorldScreen() {
     private val MIN_ZOOM = 0.3f
 
     override val renderer: TwoDRenderer = TwoDRenderer()
-    override val player: TwoDPlayer = TwoDPlayer()
+    override val player: TwoDPlayer = TwoDPlayer(AssetManager.player, 1f, 2f)
     private val polyBatch = PolygonSpriteBatch()
-    private val world = World(Vector2(0f, -10f), true)
+    private val world = World(Vector2(0f, -10f * Block.SIZE), true)
 
     private val worldGenerator = WorldGenerator(2000, 0.60, Random.nextInt())
     private val chunks = ArrayList<TerrainChunk>()
     private val entities = emptyArray<Entity>()
 
     private val camera: OrthographicCamera = OrthographicCamera(
-        80f * Block.SIZE, 45f * Block.SIZE
+        80f, 45f
+//        80f * Block.SIZE, 45f * Block.SIZE
     )
 
     init {
@@ -51,6 +51,31 @@ class TwoDScreen(override val batch: SpriteBatch) : WorldScreen() {
         camera.viewportWidth, camera.viewportHeight, camera
     )
 
+    // TODO: remove test code
+    val playerBodyDef = BodyDef()
+    init {
+        playerBodyDef.type = BodyDef.BodyType.DynamicBody
+        playerBodyDef.position.set(
+            player.position.x + player.width/2,
+            player.position.y + player.height/2
+        )
+        playerBodyDef.fixedRotation = true
+    }
+    val playerBody = world.createBody(playerBodyDef)
+
+    val playerBox = PolygonShape()
+    val fixtureDef = FixtureDef()
+    init {
+        playerBox.setAsBox(player.width/2, player.height/2)
+        fixtureDef.shape = playerBox
+        fixtureDef.density = 1.0f
+        fixtureDef.friction = 0.3f
+        playerBody.createFixture(fixtureDef)
+        playerBox.dispose()
+    }
+    //
+
+    val debugRenderer = Box2DDebugRenderer()
     override fun render(delta: Float) {
         var playerChunk =
             player.position.x.toInt() / (Block.SIZE * TerrainChunk.WIDTH)
@@ -70,12 +95,15 @@ class TwoDScreen(override val batch: SpriteBatch) : WorldScreen() {
         viewport.apply()
 
         super.render(delta)
-        renderer.renderMap(polyBatch, chunks)
+        renderer.renderMap(batch, chunks)
         renderer.render(batch, entities)
 
         batch.begin()
         player.render(batch)
         batch.end()
+
+        debugRenderer.render(world, camera.combined)
+        world.step(1/60f, 6, 2)
     }
 
     private fun updateChunks(playerChunk: Int) {

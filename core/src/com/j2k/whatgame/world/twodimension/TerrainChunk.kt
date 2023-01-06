@@ -1,7 +1,6 @@
 package com.j2k.whatgame.world.twodimension
 
-import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch
-import com.badlogic.gdx.math.Vector2
+import com.badlogic.gdx.graphics.g2d.SpriteBatch
 
 class TerrainChunk(val position: Int) {
     // array with values 0..15
@@ -9,18 +8,17 @@ class TerrainChunk(val position: Int) {
     // array with object ids in the Block enum
     private val blocks = Array(WIDTH) { IntArray(HEIGHT) { 0 } }
 
-    fun render(polyBatch: PolygonSpriteBatch) {
+    fun render(batch: SpriteBatch) {
         for (x in 0 until WIDTH) {
             for (y in 0 until HEIGHT) {
                 val conf = configurations[x][y]
                 val texture = Block.values()[blocks[x][y]].getTexture(conf)
 
-                MarchingSquares.drawSquare(
-                    conf, texture, Block.SIZE, polyBatch,
-                    Vector2(
-                        (x * Block.SIZE + position * Block.SIZE * WIDTH).toFloat(),
-                        (y * Block.SIZE).toFloat()
-                    )
+                batch.draw(
+                    texture,
+                    (x * Block.SIZE + position * Block.SIZE * WIDTH).toFloat(),
+                    (y * Block.SIZE).toFloat(),
+                    Block.SIZE.toFloat(), Block.SIZE.toFloat()
                 )
             }
         }

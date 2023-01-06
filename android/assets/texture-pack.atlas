@@ -1,0 +1,243 @@
+
+texture-pack.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+player2d
+  rotate: false
+  xy: 1, 21
+  size: 16, 32
+  orig: 16, 32
+  offset: 0, 0
+  index: -1
+block_dirt
+  rotate: false
+  xy: 1, 3
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 0
+block_ore
+  rotate: false
+  xy: 1, 3
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 0
+block_dirt
+  rotate: false
+  xy: 19, 37
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+block_dirt
+  rotate: false
+  xy: 19, 19
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 10
+block_dirt
+  rotate: false
+  xy: 37, 37
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 11
+block_dirt
+  rotate: false
+  xy: 37, 19
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 12
+block_dirt
+  rotate: false
+  xy: 55, 37
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 13
+block_dirt
+  rotate: false
+  xy: 55, 19
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 14
+block_dirt
+  rotate: false
+  xy: 73, 37
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 15
+block_dirt
+  rotate: false
+  xy: 73, 19
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+block_dirt
+  rotate: false
+  xy: 91, 37
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+block_dirt
+  rotate: false
+  xy: 91, 19
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 4
+block_dirt
+  rotate: false
+  xy: 109, 37
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 5
+block_dirt
+  rotate: false
+  xy: 109, 19
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 6
+block_dirt
+  rotate: false
+  xy: 127, 37
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 7
+block_dirt
+  rotate: false
+  xy: 127, 19
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 8
+block_dirt
+  rotate: false
+  xy: 145, 37
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 9
+block_ore
+  rotate: false
+  xy: 145, 19
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+block_ore
+  rotate: false
+  xy: 163, 37
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 10
+block_ore
+  rotate: false
+  xy: 163, 19
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 11
+block_ore
+  rotate: false
+  xy: 181, 37
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 12
+block_ore
+  rotate: false
+  xy: 181, 19
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 13
+block_ore
+  rotate: false
+  xy: 199, 37
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 14
+block_ore
+  rotate: false
+  xy: 199, 19
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 15
+block_ore
+  rotate: false
+  xy: 217, 37
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+block_ore
+  rotate: false
+  xy: 217, 19
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+block_ore
+  rotate: false
+  xy: 235, 37
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 4
+block_ore
+  rotate: false
+  xy: 235, 19
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 5
+block_ore
+  rotate: false
+  xy: 19, 1
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 6
+block_ore
+  rotate: false
+  xy: 37, 1
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 7
+block_ore
+  rotate: false
+  xy: 55, 1
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 8
+block_ore
+  rotate: false
+  xy: 73, 1
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 9
+item_dirt
+  rotate: false
+  xy: 91, 1
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
