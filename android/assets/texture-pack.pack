@@ -5,238 +5,238 @@ filter: Nearest,Nearest
 repeat: none
 player2d
   rotate: false
-  xy: 1, 21
-  size: 16, 32
-  orig: 16, 32
+  xy: 2, 22
+  size: 11, 32
+  orig: 11, 32
   offset: 0, 0
   index: -1
 block_dirt
   rotate: false
-  xy: 1, 3
+  xy: 15, 38
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 0
 block_ore
   rotate: false
-  xy: 1, 3
+  xy: 15, 38
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 0
 block_dirt
   rotate: false
-  xy: 19, 37
+  xy: 33, 38
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 1
 block_dirt
   rotate: false
-  xy: 19, 19
+  xy: 51, 38
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 10
 block_dirt
   rotate: false
-  xy: 37, 37
+  xy: 69, 38
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 11
 block_dirt
   rotate: false
-  xy: 37, 19
+  xy: 87, 38
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 12
 block_dirt
   rotate: false
-  xy: 55, 37
+  xy: 105, 38
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 13
 block_dirt
   rotate: false
-  xy: 55, 19
+  xy: 123, 38
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 14
 block_dirt
   rotate: false
-  xy: 73, 37
+  xy: 141, 38
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 15
 block_dirt
   rotate: false
-  xy: 73, 19
+  xy: 159, 38
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 2
 block_dirt
   rotate: false
-  xy: 91, 37
+  xy: 177, 38
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 3
 block_dirt
   rotate: false
-  xy: 91, 19
+  xy: 195, 38
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 4
 block_dirt
   rotate: false
-  xy: 109, 37
+  xy: 213, 38
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 5
 block_dirt
   rotate: false
-  xy: 109, 19
+  xy: 231, 38
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 6
 block_dirt
   rotate: false
-  xy: 127, 37
+  xy: 15, 20
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 7
 block_dirt
   rotate: false
-  xy: 127, 19
+  xy: 33, 20
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 8
 block_dirt
   rotate: false
-  xy: 145, 37
+  xy: 51, 20
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 9
 block_ore
   rotate: false
-  xy: 145, 19
+  xy: 69, 20
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 1
 block_ore
   rotate: false
-  xy: 163, 37
+  xy: 87, 20
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 10
 block_ore
   rotate: false
-  xy: 163, 19
+  xy: 105, 20
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 11
 block_ore
   rotate: false
-  xy: 181, 37
+  xy: 123, 20
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 12
 block_ore
   rotate: false
-  xy: 181, 19
+  xy: 141, 20
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 13
 block_ore
   rotate: false
-  xy: 199, 37
+  xy: 159, 20
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 14
 block_ore
   rotate: false
-  xy: 199, 19
+  xy: 177, 20
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 15
 block_ore
   rotate: false
-  xy: 217, 37
+  xy: 195, 20
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 2
 block_ore
   rotate: false
-  xy: 217, 19
+  xy: 213, 20
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 3
 block_ore
   rotate: false
-  xy: 235, 37
+  xy: 231, 20
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 4
 block_ore
   rotate: false
-  xy: 235, 19
+  xy: 2, 2
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 5
 block_ore
   rotate: false
-  xy: 19, 1
+  xy: 20, 2
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 6
 block_ore
   rotate: false
-  xy: 37, 1
+  xy: 38, 2
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 7
 block_ore
   rotate: false
-  xy: 55, 1
+  xy: 56, 2
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 8
 block_ore
   rotate: false
-  xy: 73, 1
+  xy: 74, 2
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 9
 item_dirt
   rotate: false
-  xy: 91, 1
+  xy: 92, 2
   size: 16, 16
   orig: 16, 16
   offset: 0, 0

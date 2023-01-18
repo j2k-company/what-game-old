@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas
 
 object AssetManager {
     private val atlas by lazy {
-        TextureAtlas(Gdx.files.internal("texture-pack.atlas"))
+        TextureAtlas(Gdx.files.internal("texture-pack.pack"))
     }
 
     val blockDirt by lazy { atlas.findRegions("block_dirt") }

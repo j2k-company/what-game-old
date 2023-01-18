@@ -14,8 +14,6 @@ class OneDPlayer(
         super.render(shapeDrawer)
     }
 
-    override fun update() { }
-
     override fun moveLeft() {
         position -= 5
     }

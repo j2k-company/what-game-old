@@ -12,13 +12,15 @@ import com.j2k.whatgame.input.InputSignal
 import com.j2k.whatgame.world.twodimension.entities.TwoDPlayer
 import kotlin.random.Random
 
-class TwoDScreen(override val batch: SpriteBatch) : WorldScreen() {
-    private val ZOOM_SPEED = 0.3f
-    private val MAX_ZOOM = 2f
-    private val MIN_ZOOM = 0.3f
+private const val ZOOM_SPEED = 0.3f
+private const val MAX_ZOOM = 2f
+private const val MIN_ZOOM = 0.3f
 
+class TwoDScreen(override val batch: SpriteBatch) : WorldScreen() {
     override val renderer: TwoDRenderer = TwoDRenderer()
-    override val player: TwoDPlayer = TwoDPlayer(AssetManager.player, 1f, 2f)
+    override val player: TwoDPlayer = TwoDPlayer(AssetManager.player,
+        AssetManager.player.regionWidth/16f, AssetManager.player.regionHeight/16f)
+
     private val polyBatch = PolygonSpriteBatch()
 
     private val worldGenerator = WorldGenerator(2000, 0.60, Random.nextInt())
@@ -30,26 +32,26 @@ class TwoDScreen(override val batch: SpriteBatch) : WorldScreen() {
     private val entities = emptyArray<Entity>()
 
     private val camera: OrthographicCamera = OrthographicCamera(
-        80f * Block.SIZE, 45f * Block.SIZE
+        80f * BLOCK_SIZE, 45f * BLOCK_SIZE
     )
 
     init {
-        // FIXME:TODO: move to function for physics block bodies creations
+        // FIXME:TODO: move to function for creating physical block bodies
         // initial blocks
-        for (x in 0 until TerrainChunk.WIDTH) {
-            for (y in 200 until TerrainChunk.HEIGHT) {
+        for (x in 0 until CHUNK_WIDTH) {
+            for (y in 200 until CHUNK_HEIGHT) {
                 PhysicsManager.createBlock(
                     chunks[1].run {
-                        x * Block.SIZE + position * Block.SIZE * TerrainChunk.WIDTH
-                    }.toFloat(), (y * Block.SIZE).toFloat(),
+                        x * BLOCK_SIZE + position * BLOCK_SIZE * CHUNK_WIDTH
+                    }.toFloat(), (y * BLOCK_SIZE).toFloat(),
                     chunks[1].getBlockConfiguration(x, y)
                 )
             }
         }
         // init player position
-        for (y in 0 until TerrainChunk.HEIGHT) {
+        for (y in 0 until CHUNK_HEIGHT) {
             if (chunks[1].getBlockConfiguration(0, y) == 0) {
-                player.position = Vector2(0f, y.toFloat() * Block.SIZE)
+                player.position = Vector2(0f, y.toFloat() * BLOCK_SIZE)
                 break
             }
         }
@@ -61,7 +63,7 @@ class TwoDScreen(override val batch: SpriteBatch) : WorldScreen() {
 
     override fun render(delta: Float) {
         var playerChunk =
-            player.position.x.toInt() / (Block.SIZE * TerrainChunk.WIDTH)
+            player.position.x.toInt() / (BLOCK_SIZE * CHUNK_WIDTH)
 
         if (player.position.x.toInt() < 0) playerChunk--
 
@@ -69,6 +71,7 @@ class TwoDScreen(override val batch: SpriteBatch) : WorldScreen() {
             updateChunks(playerChunk)
         }
 
+        // FIXME:BUG: the camera does not keep up with the character
         camera.position.x = player.position.x
         camera.position.y = player.position.y
 
@@ -86,7 +89,7 @@ class TwoDScreen(override val batch: SpriteBatch) : WorldScreen() {
         batch.end()
 
         PhysicsManager.doPhysicalStep(delta)
-        PhysicsManager.renderDebug(camera.combined)
+//        PhysicsManager.renderDebug(camera.combined)
     }
 
     private fun updateChunks(playerChunk: Int) {
@@ -110,10 +113,18 @@ class TwoDScreen(override val batch: SpriteBatch) : WorldScreen() {
         }
     }
 
-    override fun scroll(inputSignal: InputSignal) {
-        if (inputSignal == InputSignal.SCROLLED_UP && camera.zoom > MIN_ZOOM) {
+    override fun handleInput(signal: InputSignal) {
+        super.handleInput(signal)
+        when (signal) {
+            InputSignal.SCROLLED_UP -> { scroll(true) }
+            InputSignal.SCROLLED_DOWN -> { scroll(false) }
+        }
+    }
+
+    private fun scroll(isUp: Boolean) {
+        if (isUp && camera.zoom > MIN_ZOOM) {
             camera.zoom -= ZOOM_SPEED
-        } else if (inputSignal == InputSignal.SCROLLED_DOWN && camera.zoom < MAX_ZOOM) {
+        } else if (!isUp && camera.zoom < MAX_ZOOM) {
             camera.zoom += ZOOM_SPEED
         }
     }
